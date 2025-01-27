@@ -6,7 +6,6 @@ package saasquatch;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
-import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 @Command(name = "saasquatch", mixinStandardHelpOptions = true, version = "saasquatch 1.0",
