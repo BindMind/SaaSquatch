@@ -6,23 +6,23 @@
  */
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+
+    id 'distribution'
 }
+ 
+application.applicationName = 'SaaSquatch'
 
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation libs.junit.jupiter
-
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-    // This dependency is used by the application.
     implementation libs.guava
+
+    implementation 'info.picocli:picocli:4.7.6'
+
+    annotationProcessor 'info.picocli:picocli-codegen:4.7.5'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -33,11 +33,15 @@ java {
 }
 
 application {
-    // Define the main class for the application.
-    mainClass = 'org.example.App'
+    mainClass = 'saasquatch.CoolName'
 }
 
-tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+distributions {
+    main {
+        distributionBaseName = 'SaaSquatch'
+    }
+}
+
+startScripts {
+   applicationName = 'saasquatch'
 }
